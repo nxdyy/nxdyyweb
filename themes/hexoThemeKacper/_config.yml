@@ -1,0 +1,40 @@
+# Header
+menu: #导航栏连接
+  首页: /
+  # Category: /category
+  相关项目: /archives #/archives #归档页面URL 自定义页面标题: /自定义页面URL
+  关于: /about
+  Github: https://github.com/nxdyy
+
+
+
+
+
+rss: /atom.xml #rss地址  默认即可
+
+#feed:
+#  type: atom       #feed 类型 (atom/rss2)
+#  path: /atom.xml   #rss 路径
+#  limit: 20        #在 rss 中最多生成的文章数(0显示所有)
+
+
+#icon http://fontawesome.io/
+#首页显示
+article_index:
+  -  title: 最实用，最简单
+     content: 让科技变成每个人都触手可及的技术。
+     icon: icon-book
+
+
+
+# Content
+excerpt_link: Read More  #阅读更多的文字显示
+# fancybox: false  #开启fancybox效果 
+
+
+
+
+# Miscellaneous #社交网络和统计连接地址
+baidu_analytics: //hm.baidu.com/hm.js?fe2c7555911b8560db5e56121c5d5960 #百度统计
+favicon: /css/favicon.ico
+logo: /css/logo.png

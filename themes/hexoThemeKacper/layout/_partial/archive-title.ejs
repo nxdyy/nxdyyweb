@@ -1,0 +1,24 @@
+<%
+var title = ""
+if(page.archive) {
+  if(page.year){
+    title = page.year + (page.month ? '/' + page.month : '');
+  }else title = "归档";
+}else if(page.layout == "tags"){
+  	title = "标签"
+}else if(page.layout=="category"){
+	title="类别"
+}else if(page.tag){
+	title=page.tag
+}%>
+
+<header class="article-header article">
+  <h1 class="article-title" itemprop="name">
+    <%=title%>
+  </h1>
+  <div class="page-buttons">
+    <a href="https://www.nxdyy.cn/archives" class="page-btn" target="_blank">查看相关项目</a>
+    <a href="https://blog.nxdyy.cn" class="page-btn" target="_blank">nxdyy的个人博客</a>
+  </div>
+</header>
+
