@@ -5,15 +5,21 @@
     left: 0
     width: mobile-nav-width
     height: 100%
-    background: color-mobile-nav-background
-    border-right: 1px solid #fff
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%)
+    border-right: 1px solid rgba(255, 255, 255, 0.1)
+    box-shadow: 4px 0 16px rgba(0, 0, 0, 0.3)
 
 @media mq-mobile
   .mobile-nav-link
     display: block
-    color: color-grey
+    color: rgba(255, 255, 255, 0.9)
     text-decoration: none
-    padding: 15px 20px
-    font-weight: bold
+    padding: 16px 20px
+    font-weight: 500
+    transition: all transition-fast
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05)
     &:hover
       color: #fff
+      background: rgba(108, 92, 231, 0.2)
+    &:active
+      background: rgba(108, 92, 231, 0.3)

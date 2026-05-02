@@ -5,14 +5,26 @@
   clearfix()
 
 .archive-year-wrap
-  margin-bottom: 1em
-  padding-left: 10px
+  margin-bottom: 1.5em
+  padding-left: 16px
+  position: relative
+  &::before
+    content: ''
+    position: absolute
+    left: 0
+    top: 50%
+    width: 4px
+    height: 24px
+    background: linear-gradient(180deg, color-primary, color-secondary)
+    transform: translateY(-50%)
+    border-radius: 2px
 
 .archive-year
   @extend $block-caption
+  color: color-primary
 
 .archives
-  column-gap: 10px
+  column-gap: 20px
   @media mq-tablet
     column-count: 2
   @media mq-normal
@@ -23,27 +35,34 @@
 
 .archive-article-inner
   @extend $block
-  margin-bottom: 5px
+  margin-bottom: 12px
+  background: color-card-bg
+  box-shadow: shadow-sm
+  transition: all transition-normal
+  border-radius: border-radius-md
+  overflow: hidden
   a
     display: block
-    padding:3px 3px 3px 6px
-    border-radius:3px
-    color:#333
+    padding: 12px 16px
+    color: color-default
+    transition: all transition-fast
     &:hover
-      background:#E4E4E4
-      color:#000BFF
+      background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), rgba(162, 155, 254, 0.05))
+      color: color-primary
     &:active
-      background: #7D7D7D;
-      color: #FFF;
+      background: linear-gradient(135deg, color-primary, color-secondary)
+      color: #fff
     time
-      font-size:12px
-      color:#C5C5C5
+      font-size: 13px
+      color: color-grey
+      display: block
+      margin-bottom: 6px
 
 .archive-article-title
   text-decoration: none
-  font-weight: bold
+  font-weight: 600
   color: color-default
-  transition: color 0.2s
+  transition: color transition-fast
   line-height: line-height
   &:hover
     color: color-link
@@ -62,79 +81,101 @@
 #page-nav
   clearfix()
   margin: block-margin auto
-  background: #fff
-  box-shadow: 1px 2px 3px #ddd
-  border: 1px solid color-border
-  border-radius: 3px
+  background: color-card-bg
+  box-shadow: shadow-md
+  border-radius: border-radius-lg
   text-align: center
   color: color-grey
   overflow: hidden
   a, span
-    padding: 10px 20px
+    padding: 12px 20px
     line-height: 1
-    height: 2ex
+    height: auto
   a
     color: color-grey
     text-decoration: none
+    transition: all transition-fast
     &:hover
-      background: color-grey
+      background: linear-gradient(135deg, color-primary, color-secondary)
       color: #fff
   .prev
     float: left
+    border-radius: border-radius-lg 0 0 border-radius-lg
+    background: rgba(108, 92, 231, 0.1)
+    &:hover
+      background: linear-gradient(135deg, color-primary, color-secondary)
   .next
     float: right
+    border-radius: 0 border-radius-lg border-radius-lg 0
+    background: rgba(108, 92, 231, 0.1)
+    &:hover
+      background: linear-gradient(135deg, color-primary, color-secondary)
   .page-number
     display: inline-block
     @media mq-mobile
       display: none
   .current
-    color: color-default
+    color: #fff
     font-weight: bold
+    background: linear-gradient(135deg, color-primary, color-secondary)
   .space
     color: color-border
 
-
-
-
 .category-list
-  padding: 0 0 50px 0;
+  padding: 0 0 50px 0
   a
-    color: #222
+    color: color-default
+    text-decoration: none
+    transition: all transition-fast
     sup
-      color:#BABABA
-      font-size:10px
-      vertical-align: super;
-      display:inline-block
-      padding:0 4px 0 4px;
-  .category-tag
-    background:#CCCCCC
-    border-radius:3px
-    display:inline-block
-    padding:0 3px 0 3px
-  .tag-list
-    padding:0 0 30px 0
-    a
-      border: 1px dashed #AFAFAF
-      background: #DDD;
-      border-radius: 3px;
-      padding: 0px 0 2px 4px;
-      margin: 4px 0 0 0;
+      color: color-grey
+      font-size: 10px
+      vertical-align: super
       display: inline-block
-      &:hover
-        background: #CCC;
-  .tag_name
-    font-weight:bold
-  h2
-    margin:20px 0 5px 0
-  article
-    border-left:2px solid #D6D6D6
-    padding: 6px 0 6px 8px
-    margin: 0 10px 0 10px
-    line-height:23px
+      padding: 0 4px
+      margin-left: 4px
+      background: color-background
+      border-radius: 10px
+  .category-tag
+    background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(162, 155, 254, 0.1))
+    border-radius: border-radius-sm
+    display: inline-block
+    padding: 0 8px
+    color: color-primary
+    font-weight: 500
+  .tag-list
+    padding: 0 0 30px 0
     a
-      padding:0 3px 0 3px
+      border: 1px solid color-border
+      background: color-card-bg
+      border-radius: border-radius-xl
+      padding: 6px 12px
+      margin: 6px 4px
+      display: inline-block
+      transition: all transition-fast
       &:hover
-        background:#333
-        color:#fff
-        border-radius: 3px;
-      
+        background: linear-gradient(135deg, color-primary, color-secondary)
+        color: #fff
+        border-color: transparent
+        transform: translateY(-2px)
+        box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3)
+  .tag_name
+    font-weight: bold
+  h2
+    margin: 20px 0 10px 0
+    color: color-primary
+  article
+    border-left: 3px solid color-border
+    padding: 10px 0 10px 12px
+    margin: 8px 10px
+    line-height: 24px
+    transition: all transition-fast
+    &:hover
+      border-left-color: color-primary
+    a
+      padding: 4px 8px
+      border-radius: border-radius-sm
+      transition: all transition-fast
+      &:hover
+        background: linear-gradient(135deg, color-primary, color-secondary)
+        color: #fff

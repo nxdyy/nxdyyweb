@@ -2,32 +2,41 @@
 support-for-ie = false
 vendor-prefixes = webkit moz ms official
 
-// Colors
-color-default = #555
-color-grey = #999
-color-border = #ddd
-color-link = #258fb8
-color-background = #eee
-color-sidebar-text = #777
-color-widget-background = #ddd
-color-widget-border = #ccc
-color-footer-background = #D1D1D1
-color-mobile-nav-background = #191919
+// Colors - Modern Dark Theme
+color-default = #2d3436
+color-grey = #636e72
+color-border = #e0e0e0
+color-link = #0984e3
+color-background = #f8f9fa
+color-sidebar-text = #636e72
+color-widget-background = #f1f3f4
+color-widget-border = #dfe6e9
+color-footer-background = #2d3436
+color-mobile-nav-background = #1a1a2e
 color-twitter = #00aced
 color-facebook = #3b5998
 color-pinterest = #cb2027
 color-google = #dd4b39
 
-// Fonts
-font-sans = "Helvetica Neue", Helvetica, Arial, sans-serif
-font-serif = Georgia, "Times New Roman", serif
-font-mono = "Source Code Pro", Consolas, Monaco, Menlo, Consolas, monospace
+// Gradient Colors
+color-primary = #0984e3
+color-secondary = #74b9ff
+color-accent = #00cec9
+color-gradient-start = #0984e3
+color-gradient-end = #74b9ff
+color-card-bg = #ffffff
+color-card-hover = #f8f9fa
+
+// Fonts - Modern Font Stack
+font-sans = 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif
+font-serif = 'Playfair Display', Georgia, 'Times New Roman', serif
+font-mono = 'Fira Code', 'Source Code Pro', Consolas, Monaco, Menlo, Consolas, monospace
 font-icon = FontAwesome
 font-icon-path = "fonts/fontawesome-webfont"
 font-icon-version = "4.0.3"
-font-size = 14px
-line-height = 1.6em
-line-height-title = 1.1em
+font-size = 16px
+line-height = 1.7em
+line-height-title = 1.2em
 
 // Header
 logo-size = 70px
@@ -36,14 +45,14 @@ logo-shadow =  0 1px 3px rgba(0,0,0,.4),0 0 30px rgba(0,0,0,.075)
 subtitle-size = 24px
 subtitle-line = 44px
 banner-height = 600px
-banner-url = "images/banner.jpg"
+banner-url = "https://bing.img.run/uhd.php"
 
 sidebar = hexo-config("sidebar")
 
 // Layout
-block-margin = 20px
-article-padding = 20px
-mobile-nav-width = 130px
+block-margin = 30px
+article-padding = 28px
+mobile-nav-width = 280px
 main-column = 9
 sidebar-column = 3
 
@@ -58,6 +67,19 @@ gutter-width = 20px
 columns = main-column + _sidebar-column
 
 // Media queries
-mq-mobile = "screen and (max-width: 479px)"
-mq-tablet = "screen and (min-width: 480px) and (max-width: 767px)"
-mq-normal = "screen and (min-width: 768px)"
+mq-mobile = "screen and (max-width: 767px)"
+mq-tablet = "screen and (min-width: 768px) and (max-width: 1023px)"
+mq-normal = "screen and (min-width: 1024px)"
+
+// Modern Design Tokens
+border-radius-sm = 8px
+border-radius-md = 12px
+border-radius-lg = 20px
+border-radius-xl = 24px
+shadow-sm = 0 2px 8px rgba(0, 0, 0, 0.08)
+shadow-md = 0 4px 16px rgba(0, 0, 0, 0.12)
+shadow-lg = 0 8px 32px rgba(0, 0, 0, 0.16)
+shadow-xl = 0 12px 48px rgba(0, 0, 0, 0.2)
+transition-fast = 0.2s cubic-bezier(0.4, 0, 0.2, 1)
+transition-normal = 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+transition-slow = 0.5s cubic-bezier(0.4, 0, 0.2, 1)

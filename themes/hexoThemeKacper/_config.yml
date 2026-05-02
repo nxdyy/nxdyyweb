@@ -9,7 +9,6 @@ menu: #导航栏连接
 
 
 
-
 rss: /atom.xml #rss地址  默认即可
 
 #feed:
@@ -32,6 +31,14 @@ excerpt_link: Read More  #阅读更多的文字显示
 # fancybox: false  #开启fancybox效果 
 
 
+# Footer Custom Content
+# 支持 HTML 格式，可在页尾底部显示自定义内容
+# 示例：
+footer_content: "联系方式: <a href='mailto:nxdyys@gmail.com'>nxdyys@gmail.com</a>"
+
+# Busuanzi Counter (不蒜子访问量统计)
+# 设置为 false 可禁用
+busuanzi: true
 
 
 # Miscellaneous #社交网络和统计连接地址
