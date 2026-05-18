@@ -1,0 +1,19 @@
+# Hexo generated files
+public/
+
+# Hexo cache
+db.json
+
+# Dependencies
+node_modules/
+
+# Server-specific config files
+.well-known/
+.htaccess
+.user.ini
+index.html
+404.html
+
+# OS files
+.DS_Store
+Thumbs.db
