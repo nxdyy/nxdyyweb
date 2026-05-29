@@ -34,7 +34,7 @@ excerpt_link: Read More  #阅读更多的文字显示
 # Footer Custom Content
 # 支持 HTML 格式，可在页尾底部显示自定义内容
 # 示例：
-footer_content: "联系方式: <a href='mailto:nxdyys@gmail.com'>nxdyys@gmail.com</a>"
+footer_content: "联系方式: <a href='mailto:nxdyys@gmail.com'>nxdyys@gmail.com</a>    <a href='https://beian.miit.gov.cn/' target='_blank'>晋ICP备2026006275号-1</a>"
 
 # Busuanzi Counter (不蒜子访问量统计)
 # 设置为 false 可禁用
