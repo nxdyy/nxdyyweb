@@ -1,286 +1,346 @@
+// ============================================
+// Terminal Style Article
+// ============================================
+
+// Page TOC
 .page-toc
   float: right
-  .toc-number 
-    color: rgba(51, 51, 51, 0.34)
+  
+  .toc-number
+    color: var(--terminal-text-muted)
+  
   @media mq-tablet
     display: none
+  
   @media mq-mobile
     display: none
+  
   ul, ol, dl, li
     list-style: none
+  
   ol.toc
     margin: 0
     position: relative
     margin: 0px 0 0 20px
-    background: color-card-bg
-    padding: 16px
-    border-radius: border-radius-md
+    background: var(--terminal-bg-secondary)
+    padding: var(--terminal-space-md)
+    border-radius: var(--terminal-radius)
     max-width: 280px
     display: block
     overflow: hidden
     top: 0
     right: 0
     z-index: 999
-    box-shadow: shadow-sm
-    border: 1px solid color-border
+    box-shadow: 0 0 15px var(--terminal-glow)
+    border: 1px solid var(--terminal-border)
+    
+    a
+      color: var(--terminal-text-secondary)
+      text-decoration: none
+      font-size: var(--terminal-font-size-sm)
+      
+      &:hover
+        color: var(--terminal-accent)
 
+// Article container
 .article
-  margin: block-margin 0
-  transition: all transition-normal
+  margin: var(--terminal-space-lg) 0
+  transition: all var(--terminal-transition-normal)
 
+// Article inner - Terminal window style
 .article-inner
   overflow: hidden
-  background: color-card-bg
-  border-radius: border-radius-lg
-  box-shadow: shadow-md
-  transition: all transition-normal
+  background: var(--terminal-bg-secondary)
+  border: 1px solid var(--terminal-border)
+  border-radius: var(--terminal-radius)
+  box-shadow: 0 0 20px var(--terminal-glow)
+  transition: all var(--terminal-transition-normal)
+  
   &:hover
-    box-shadow: shadow-lg
-    transform: translateY(-2px)
+    box-shadow: 0 0 30px var(--terminal-glow-strong)
+    border-color: var(--terminal-border-hover)
+
+// Article header with terminal style
+.article-header
+  padding: var(--terminal-space-lg)
+  background: var(--terminal-bg-tertiary)
+  border-bottom: 1px solid var(--terminal-border)
+  
+  // Terminal window controls
+  position: relative
+  
+  &::before
+    content: ''
+    position: absolute
+    top: var(--terminal-space-sm)
+    left: var(--terminal-space-md)
+    display: flex
+    gap: 6px
+    
+    // Using pseudo elements for window controls
+    width: 50px
+    height: 12px
+    background: radial-gradient(circle at 6px 6px, var(--terminal-error) 0, var(--terminal-error) 5px, transparent 6px),
+                radial-gradient(circle at 20px 6px, var(--terminal-warning) 0, var(--terminal-warning) 5px, transparent 6px),
+                radial-gradient(circle at 34px 6px, var(--terminal-success) 0, var(--terminal-success) 5px, transparent 6px)
 
 .article-meta
   clearfix()
+  margin-top: var(--terminal-space-md)
 
 .article-date
   float: left
   margin-top: 3px
-  color: color-grey
-  font-size: 0.9em
+  color: var(--terminal-text-secondary)
+  font-size: var(--terminal-font-size-sm)
+  font-family: var(--terminal-font)
+  
   &::before
     content: "\f073"
     font-family: FontAwesome
-    margin-right: 6px
-    color: color-link
+    margin-right: var(--terminal-space-sm)
+    color: var(--terminal-accent)
 
 .article-category
   float: left
   line-height: 1em
-  color: color-link
-  margin-left: 12px
+  color: var(--terminal-accent)
+  margin-left: var(--terminal-space-md)
+  
   &:before
     content: "\f02d"
     font-family: FontAwesome
     margin-right: 4px
 
 .article-category-link
-  color: color-link
+  color: var(--terminal-accent)
   margin: 0 8px 0
   text-decoration: none
-  transition: all transition-fast
+  transition: all var(--terminal-transition-fast)
+  
   &:hover
-    text-decoration: underline
+    color: var(--terminal-accent-hover)
+    text-shadow: 0 0 10px var(--terminal-glow)
 
-.article-header
-  padding: article-padding article-padding 0
-
-.page-buttons
-  display: flex
-  gap: 20px
-  margin-top: 40px
-  margin-bottom: 30px
-  justify-content: center
-  flex-wrap: wrap
-  .page-btn
-    position: relative
-    display: inline-flex
-    align-items: center
-    padding: 14px 36px
-    background: linear-gradient(135deg, color-primary 0%, color-secondary 100%)
-    color: #fff
-    text-decoration: none
-    border-radius: border-radius-xl
-    font-size: 0.95em
-    font-weight: 600
-    letter-spacing: 0.5px
-    overflow: hidden
-    transition: all transition-normal
-    box-shadow: 0 4px 15px rgba(108, 92, 231, 0.3)
-    cursor: pointer
-    border: 2px solid transparent
-    &::before
-      content: ''
-      position: absolute
-      top: 50%
-      left: 50%
-      width: 0
-      height: 0
-      border-radius: 50%
-      background: rgba(255, 255, 255, 0.2)
-      transform: translate(-50%, -50%)
-      transition: all transition-slow
-    &:hover
-      transform: translateY(-4px)
-      box-shadow: 0 8px 25px rgba(108, 92, 231, 0.4)
-      text-decoration: none
-      &::before
-        width: 400px
-        height: 400px
-    &:active
-      transform: translateY(-2px)
-      box-shadow: 0 4px 12px rgba(108, 92, 231, 0.3)
-
+// Article title with terminal style
 .article-title
   text-decoration: none
-  font-size: 2.2em
-  font-weight: 700
-  color: color-default
-  line-height: line-height-title
-  transition: color transition-fast
-  padding: 0 0 20px 0
+  font-size: 1.75rem
+  font-weight: 600
+  color: var(--terminal-text)
+  line-height: var(--line-height-title)
+  transition: all var(--terminal-transition-fast)
+  padding: var(--terminal-space-md) 0 0 0
+  font-family: var(--terminal-font)
+  display: block
+  
   &:hover
-    color: color-link
+    color: var(--terminal-accent)
+    text-shadow: 0 0 15px var(--terminal-glow)
 
+// Article API style
 .article_api
-  padding: 0 0px 0 270px
-  background-color: color-card-bg
+  padding: 0 0 0 270px
+  background-color: var(--terminal-bg)
+  
   @media mq-mobile
     padding: 0 0px
+  
   .article-inner
-    padding: 0 24px
-    border-radius: border-radius-md
+    padding: 0 var(--terminal-space-lg)
+    border-radius: var(--terminal-radius)
+    background: var(--terminal-bg-secondary)
+  
   .article-entry
     padding: 0
-    a 
+    
+    a
       img
         display: inline-block
-        border-radius: border-radius-sm
+        border-radius: var(--terminal-radius-sm)
+  
   .page-toc
     position: fixed
     overflow: auto
     left: 0
     height: 100%
-    background: color-card-bg
-    box-shadow: shadow-sm
+    background: var(--terminal-bg-secondary)
+    box-shadow: 0 0 15px var(--terminal-glow)
+    border-right: 1px solid var(--terminal-border)
+    
     @media mq-tablet
       display: block
+    
     ol.toc
       margin: 0
 
+// Article content
 .article-entry
   clearfix()
-  color: color-default
-  padding: 0 article-padding
+  color: var(--terminal-text)
+  padding: var(--terminal-space-lg)
+  font-family: var(--terminal-font)
+  
   p, table
-    line-height: line-height
-    margin: (line-height * 0.6) 0
+    line-height: var(--terminal-line-height)
+    margin: calc(var(--terminal-line-height) * 0.6) 0
+  
   h1, h2, h3, h4, h5, h6
-    font-weight: 700
-    margin: (line-height * 0.8) 0 (line-height * 0.4) 0
-    color: color-default
+    font-weight: 600
+    margin: calc(var(--terminal-line-height) * 0.8) 0 calc(var(--terminal-line-height) * 0.4) 0
+    color: var(--terminal-text)
+    font-family: var(--terminal-font)
+  
   h1
-    font-size: 2em
-    padding-bottom: 10px
-    border-bottom: 2px solid color-border
+    font-size: 1.75em
+    padding-bottom: var(--terminal-space-sm)
+    border-bottom: 1px solid var(--terminal-border)
+    color: var(--terminal-accent)
+  
   h2
-    font-size: 1.7em
-    padding-bottom: 8px
-    border-bottom: 1px solid color-border
+    font-size: 1.5em
+    padding-bottom: var(--terminal-space-xs)
+    border-bottom: 1px solid var(--terminal-border)
+  
   h3
-    font-size: 1.4em
+    font-size: 1.25em
+  
   h4
-    font-size: 1.2em
-  h5
     font-size: 1.1em
-  h6
+  
+  h5
     font-size: 1em
-    color: color-grey
+  
+  h6
+    font-size: 0.9em
+    color: var(--terminal-text-secondary)
+  
   a
-    color: color-link
+    color: var(--terminal-accent)
     text-decoration: none
     position: relative
     padding-bottom: 2px
-    transition: all transition-fast
+    transition: all var(--terminal-transition-fast)
+    
     &::after
       content: ''
       position: absolute
       bottom: 0
       left: 0
       width: 0
-      height: 2px
-      background: color-link
-      transition: width transition-normal
+      height: 1px
+      background: var(--terminal-accent)
+      transition: width var(--terminal-transition-normal)
+      box-shadow: 0 0 5px var(--terminal-glow)
+    
     &:hover
       text-decoration: none
-      color: color-gradient-end
+      color: var(--terminal-accent-hover)
+      
       &::after
         width: 100%
+  
   img, video
     max-width: 100%
     height: auto
     display: block
-    margin: 20px auto
-    border-radius: border-radius-md
-    box-shadow: shadow-sm
-    transition: all transition-normal
+    margin: var(--terminal-space-lg) auto
+    border-radius: var(--terminal-radius)
+    border: 1px solid var(--terminal-border)
+    box-shadow: 0 0 15px var(--terminal-glow)
+    transition: all var(--terminal-transition-normal)
+    
     &:hover
-      box-shadow: shadow-md
-      transform: scale(1.01)
+      box-shadow: 0 0 25px var(--terminal-glow-strong)
+      border-color: var(--terminal-border-hover)
+  
   iframe
-    border: none
-    border-radius: border-radius-md
+    border: 1px solid var(--terminal-border)
+    border-radius: var(--terminal-radius)
+  
   table
     width: 100%
     border-collapse: collapse
     border-spacing: 0
-    margin: 20px 0
-    border-radius: border-radius-sm
+    margin: var(--terminal-space-lg) 0
+    border-radius: var(--terminal-radius)
     overflow: hidden
+    border: 1px solid var(--terminal-border)
+    
     thead
-      background: linear-gradient(135deg, color-primary, color-secondary)
-      color: #fff
+      background: var(--terminal-bg-tertiary)
+      color: var(--terminal-accent)
+    
     th
       font-weight: 600
-      padding: 14px 16px
+      padding: var(--terminal-space-sm) var(--terminal-space-md)
       text-align: left
+      border-bottom: 1px solid var(--terminal-border)
+    
     td
-      border-top: 1px solid color-border
-      padding: 12px 16px
+      border-top: 1px solid var(--terminal-border)
+      padding: var(--terminal-space-sm) var(--terminal-space-md)
+    
     tbody tr
-      transition: background transition-fast
+      transition: background var(--terminal-transition-fast)
+      
       &:hover
-        background: color-card-hover
+        background: var(--terminal-bg-hover)
+  
   blockquote
-    background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), rgba(162, 155, 254, 0.05))
-    border-left: 4px solid color-primary
-    padding: 16px 20px
-    margin: 20px 0
-    border-radius: 0 border-radius-sm border-radius-sm 0
-    color: color-default
-    font-family: font-serif
+    background: var(--terminal-bg-tertiary)
+    border-left: 3px solid var(--terminal-accent)
+    padding: var(--terminal-space-md) var(--terminal-space-lg)
+    margin: var(--terminal-space-lg) 0
+    border-radius: 0 var(--terminal-radius) var(--terminal-radius) 0
+    color: var(--terminal-text-secondary)
+    font-family: var(--terminal-font)
     font-size: 1em
+    box-shadow: 0 0 10px var(--terminal-glow)
+    
     p
       margin: 0
+    
     footer
-      font-size: font-size
-      margin: 10px 0 0 0
-      font-family: font-sans
+      font-size: var(--terminal-font-size)
+      margin: var(--terminal-space-sm) 0 0 0
+      font-family: var(--terminal-font)
+      color: var(--terminal-text-muted)
+      
       cite
         &:before
           content: "—"
           padding: 0 0.5em
+  
   .pullquote
     text-align: left
     width: 45%
     margin: 0
+    
     &.left
       margin-left: 0.5em
       margin-right: 1em
+    
     &.right
       margin-right: 0.5em
       margin-left: 1em
+  
   .caption
-    color: color-grey
+    color: var(--terminal-text-muted)
     display: block
     font-size: 0.9em
-    margin-top: 10px
+    margin-top: var(--terminal-space-sm)
     position: relative
     text-align: center
+  
   .video-container
     position: relative
     padding-top: (9 / 16 * 100)%
     height: 0
     overflow: hidden
-    border-radius: border-radius-md
+    border-radius: var(--terminal-radius)
+    border: 1px solid var(--terminal-border)
+    
     iframe, object, embed
       position: absolute
       top: 0
@@ -289,186 +349,235 @@
       height: 100%
       margin-top: 0
 
+// Article box
 .article_box
-  padding: 30px 0 80px 0
+  padding: var(--terminal-space-xl) 0 calc(var(--terminal-space-xl) * 2) 0
 
+// Article index
 .article_index
   float: left
   width: 50%
   min-height: 1px
-  margin-top: 40px
-  transition: all transition-normal
+  margin-top: var(--terminal-space-xl)
+  transition: all var(--terminal-transition-normal)
+  
   &:hover
     transform: translateY(-4px)
+  
   @media mq-tablet
     width: 100%
+  
   @media mq-mobile
     width: 100%
+  
   h4
-    font-size: 18px
-    margin: 12px 0
-    color: color-primary
-    padding: 0 0 0 20px
-    font-weight: 700
+    font-size: var(--terminal-font-size)
+    margin: var(--terminal-space-sm) 0
+    color: var(--terminal-accent)
+    padding: 0 0 0 var(--terminal-space-md)
+    font-weight: 600
     text-rendering: optimizelegibility
     position: relative
+    font-family: var(--terminal-font)
+    
     &::before
-      content: ''
+      content: '>'
       position: absolute
       left: 0
       top: 50%
-      width: 4px
-      height: 20px
-      background: linear-gradient(180deg, color-primary, color-secondary)
       transform: translateY(-50%)
-      border-radius: 2px
+      color: var(--terminal-success)
+      font-weight: 600
+  
   p
-    margin: 0 0 12px
-    line-height: 24px
-    color: color-grey
-    padding: 0 30px 0 20px
+    margin: 0 0 var(--terminal-space-sm)
+    line-height: var(--terminal-line-height)
+    color: var(--terminal-text-secondary)
+    padding: 0 var(--terminal-space-lg) 0 var(--terminal-space-md)
 
+// Read more link
 .article-more-link a
   display: inline-flex
   align-items: center
   line-height: 1em
-  padding: 10px 20px
-  border-radius: border-radius-xl
-  background: linear-gradient(135deg, color-primary, color-secondary)
-  color: #fff
+  padding: var(--terminal-space-sm) var(--terminal-space-md)
+  border-radius: var(--terminal-radius-sm)
+  background: transparent
+  color: var(--terminal-accent)
   text-shadow: none
   text-decoration: none
-  transition: all transition-normal
-  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.3)
+  transition: all var(--terminal-transition-fast)
+  border: 1px solid var(--terminal-accent)
   font-weight: 500
+  font-family: var(--terminal-font)
+  
+  &::before
+    content: '$ '
+    color: var(--terminal-success)
+    margin-right: 4px
+  
   &:hover
-    transform: translateY(-2px)
-    box-shadow: 0 4px 12px rgba(108, 92, 231, 0.4)
+    background: var(--terminal-accent)
+    color: var(--terminal-text-inverse)
+    box-shadow: 0 0 15px var(--terminal-glow)
     text-decoration: none
 
+// Article footer
 .article-footer
   clearfix()
-  font-size: 0.9em
-  line-height: line-height
-  padding-top: line-height
-  margin: 0 article-padding article-padding
-  border-top: 1px solid color-border
+  font-size: var(--terminal-font-size-sm)
+  line-height: var(--terminal-line-height)
+  padding-top: var(--terminal-line-height)
+  margin: 0 var(--terminal-space-lg) var(--terminal-space-lg)
+  border-top: 1px solid var(--terminal-border)
+  
   a
-    color: color-grey
+    color: var(--terminal-text-secondary)
     text-decoration: none
-    transition: color transition-fast
+    transition: color var(--terminal-transition-fast)
+    
     &:hover
-      color: color-link
+      color: var(--terminal-accent)
 
+// Article tags
 .article-tag-list
   list-style: none
   display: inline-flex
   flex-wrap: wrap
-  gap: 8px
+  gap: var(--terminal-space-sm)
   padding: 0
 
 .article-tag-list-item
   float: none
   margin-right: 0
 
-.article-tag-list-link  
-  background: linear-gradient(135deg, rgba(108, 92, 231, 0.1), rgba(162, 155, 254, 0.1))
-  border-radius: border-radius-xl
-  padding: 4px 12px
-  color: color-primary
+.article-tag-list-link
+  background: var(--terminal-bg-tertiary)
+  border-radius: var(--terminal-radius-sm)
+  padding: 2px 10px
+  color: var(--terminal-accent)
   font-weight: 500
   font-size: 0.85em
-  transition: all transition-fast
+  transition: all var(--terminal-transition-fast)
   display: inline-block
+  border: 1px solid var(--terminal-border)
+  font-family: var(--terminal-font)
+  
   &:hover
-    background: linear-gradient(135deg, color-primary, color-secondary)
-    color: #fff
+    background: var(--terminal-accent)
+    color: var(--terminal-text-inverse)
+    border-color: var(--terminal-accent)
+    box-shadow: 0 0 10px var(--terminal-glow)
     text-decoration: none
+  
   &:before
     content: "#"
     margin-right: 2px
+    color: var(--terminal-success)
 
 .article-comment-link
   float: right
-  color: color-primary
-  transition: all transition-fast
+  color: var(--terminal-accent)
+  transition: all var(--terminal-transition-fast)
+  
   &:before
     content: "\f075"
-    font-family: font-icon
-    padding-right: 8px
+    font-family: FontAwesome
+    padding-right: var(--terminal-space-sm)
+  
   &:hover
-    color: color-gradient-end
+    color: var(--terminal-accent-hover)
+    text-shadow: 0 0 10px var(--terminal-glow)
 
 .article-share-link
   cursor: pointer
   float: right
-  margin-left: 20px
-  color: color-primary
-  transition: all transition-fast
+  margin-left: var(--terminal-space-lg)
+  color: var(--terminal-accent)
+  transition: all var(--terminal-transition-fast)
+  
   &:before
     content: "\f064"
-    font-family: font-icon
+    font-family: FontAwesome
     padding-right: 6px
+  
   &:hover
-    color: color-gradient-end
+    color: var(--terminal-accent-hover)
+    text-shadow: 0 0 10px var(--terminal-glow)
 
+// Icons
 $icon-awesome
   display: inline-block
   font-style: normal
+  
   &:before
-    font-family: font-icon
+    font-family: FontAwesome
     padding-right: 6px
 
 .icon-github-alt
   @extend $icon-awesome
+  
   &:before
     content: "\f113"
+
 .icon-book
   @extend $icon-awesome
-  color: color-primary
+  color: var(--terminal-accent)
+  
   &:before
     content: "\f02d"
+
 .icon-bolt
   @extend $icon-awesome
-  color: color-accent
+  color: var(--terminal-accent)
+  
   &:before
     content: "\f135"
-    
+
 .icon-lab
   @extend $icon-awesome
-  color: color-secondary
+  color: var(--terminal-accent)
+  
   &:before
     content: "\f0f0"
 
+// Article navigation
 #article-nav
   clearfix()
   position: relative
+  
   @media mq-normal
-    margin: block-margin 0
+    margin: var(--terminal-space-lg) 0
+    
     &:before
       absolute-center(8px)
       content: ""
       border-radius: 50%
-      background: linear-gradient(135deg, color-primary, color-secondary)
-      box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1)
+      background: var(--terminal-accent)
+      box-shadow: 0 0 0 4px var(--terminal-glow)
 
 .article-nav-link-wrap
   text-decoration: none
-  color: color-grey
+  color: var(--terminal-text-secondary)
   box-sizing: border-box
-  margin-top: block-margin
+  margin-top: var(--terminal-space-lg)
   text-align: center
   display: block
-  padding: 16px
-  background: color-card-bg
-  border-radius: border-radius-md
-  box-shadow: shadow-sm
-  transition: all transition-normal
+  padding: var(--terminal-space-md)
+  background: var(--terminal-bg-secondary)
+  border-radius: var(--terminal-radius)
+  border: 1px solid var(--terminal-border)
+  box-shadow: 0 0 10px var(--terminal-glow)
+  transition: all var(--terminal-transition-normal)
+  font-family: var(--terminal-font)
+  
   &:hover
-    color: color-default
-    box-shadow: shadow-md
+    color: var(--terminal-text)
+    box-shadow: 0 0 20px var(--terminal-glow-strong)
+    border-color: var(--terminal-border-hover)
     transform: translateY(-2px)
     text-decoration: none
+  
   @media mq-normal
     width: 50%
     margin-top: 0
@@ -477,57 +586,62 @@ $icon-awesome
   @media mq-normal
     float: left
     text-align: right
-    padding-right: 20px
+    padding-right: var(--terminal-space-lg)
 
 #article-nav-older
   @media mq-normal
     float: right
     text-align: left
-    padding-left: 20px
+    padding-left: var(--terminal-space-lg)
 
 .article-nav-caption
   text-transform: uppercase
   letter-spacing: 2px
-  color: color-link
+  color: var(--terminal-accent)
   line-height: 1em
   font-weight: 600
+  font-size: var(--terminal-font-size-sm)
+  
   #article-nav-newer &
     margin-right: -2px
 
 .article-nav-title
   font-size: 0.9em
-  line-height: line-height
-  margin-top: 8px
-  color: color-default
+  line-height: var(--terminal-line-height)
+  margin-top: var(--terminal-space-sm)
+  color: var(--terminal-text)
 
+// Share box
 .article-share-box
   position: absolute
   display: none
-  background: color-card-bg
-  box-shadow: shadow-lg
-  border-radius: border-radius-md
+  background: var(--terminal-bg-secondary)
+  box-shadow: 0 0 30px var(--terminal-glow-strong)
+  border-radius: var(--terminal-radius)
   margin-left: -145px
   overflow: hidden
   z-index: 1
+  border: 1px solid var(--terminal-border)
+  
   &.on
     display: block
 
 .article-share-input
   width: 100%
-  background: none
+  background: var(--terminal-bg-tertiary)
   box-sizing: border-box
-  font: 14px font-sans
-  padding: 0 15px
-  color: color-default
+  font: var(--terminal-font-size) var(--terminal-font)
+  padding: 0 var(--terminal-space-md)
+  color: var(--terminal-text)
   outline: none
-  border: 1px solid color-border
-  border-radius: border-radius-md border-radius-md 0 0
+  border: 1px solid var(--terminal-border)
+  border-radius: var(--terminal-radius) var(--terminal-radius) 0 0
   height: 40px
   line-height: 40px
 
 .article-share-links
   clearfix()
-  background: color-background
+  background: var(--terminal-bg)
 
 $article-share-link
   width: 50px
@@ -535,53 +649,66 @@ $article-share-link
   display: block
   float: left
   position: relative
-  color: color-grey
-  transition: all transition-fast
+  color: var(--terminal-text-secondary)
+  transition: all var(--terminal-transition-fast)
+  
   &:before
     font-size: 20px
-    font-family: font-icon
+    font-family: FontAwesome
     absolute-center(@font-size)
     text-align: center
+  
   &:hover
-    color: #fff
+    color: var(--terminal-text)
+    background: var(--terminal-bg-hover)
 
 .article-share-twitter
   @extend $article-share-link
+  
   &:before
     content: "\f099"
+  
   &:hover
-    background: color-twitter
-    text-shadow: 0 1px darken(color-twitter, 20%)
+    color: #1da1f2
+    text-shadow: 0 0 10px rgba(29, 161, 242, 0.5)
 
 .article-share-facebook
   @extend $article-share-link
+  
   &:before
     content: "\f09a"
+  
   &:hover
-    background: color-facebook
-    text-shadow: 0 1px darken(color-facebook, 20%)
+    color: #3b5998
+    text-shadow: 0 0 10px rgba(59, 89, 152, 0.5)
 
 .article-share-pinterest
   @extend $article-share-link
+  
   &:before
     content: "\f0d2"
+  
   &:hover
-    background: color-pinterest
-    text-shadow: 0 1px darken(color-pinterest, 20%)
+    color: #cb2027
+    text-shadow: 0 0 10px rgba(203, 32, 39, 0.5)
 
 .article-share-google
   @extend $article-share-link
+  
   &:before
     content: "\f0d5"
+  
   &:hover
-    background: color-google
-    text-shadow: 0 1px darken(color-google, 20%)
+    color: #dd4b39
+    text-shadow: 0 0 10px rgba(221, 75, 57, 0.5)
 
+// Gallery
 .article-gallery
-  background: #000
+  background: var(--terminal-bg)
   position: relative
-  border-radius: border-radius-md
+  border-radius: var(--terminal-radius)
   overflow: hidden
+  border: 1px solid var(--terminal-border)
 
 .article-gallery-photos
   position: relative
@@ -590,11 +717,14 @@ $article-share-link
 .article-gallery-img
   display: none
   max-width: 100%
+  
   &:first-child
     display: block
+  
   &.loaded
     position: absolute
     display: block
+  
   img
     display: block
     max-width: 100%

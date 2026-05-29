@@ -23,8 +23,34 @@
     
       <link rel="icon" href="/css/favicon.ico">
     
-    <link rel="stylesheet" href="/css/style.css?v=20260502005" media="screen" type="text/css">
-
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/css/style.css?v=20260518001" media="screen" type="text/css">
+    
+    <!-- Theme Manager Script - Load Early -->
+    <script>
+    // 立即执行：从 localStorage 恢复主题和语言，防止闪烁
+    (function() {
+        try {
+            var savedTheme = localStorage.getItem('terminal-theme');
+            if (savedTheme && ['classic', 'amber', 'cyberpunk', 'matrix', 'minimal'].includes(savedTheme)) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+            
+            var savedLang = localStorage.getItem('terminal-language');
+            if (savedLang && ['zh-CN', 'ja', 'en'].includes(savedLang)) {
+                document.documentElement.setAttribute('data-lang', savedLang);
+            }
+        } catch (e) {
+            // 忽略 localStorage 错误
+        }
+    })();
+    </script>
+    
     
 <!-- Baidu Analytics -->
 <script type="text/javascript">
@@ -40,28 +66,48 @@ var _hmt = _hmt || [];
 
 
     <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+    
+    <!-- i18n Translation Files -->
+    <script src="/js/i18n/zh-CN.js?v=20260518001"></script>
+    <script src="/js/i18n/ja.js?v=20260518001"></script>
+    <script src="/js/i18n/en.js?v=20260518001"></script>
+    
+    <!-- i18n Manager -->
+    <script src="/js/i18n-manager.js?v=20260518001" defer></script>
+    
+    <!-- Theme Manager -->
+    <script src="/js/theme-manager.js?v=20260518001" defer></script>
 <meta name="generator" content="Hexo 8.1.1"></head>
+
 <body>
 <div id="container"> 
 
     
     <div id="wrap">
 	   
-
 <header id="header" class="header">
     
-    <div id="banner"></div>
+    <div id="banner">
+        <div class="terminal-overlay"></div>
+    </div>
     
     <div id="header-outer" class="outer">
         
         <div id="header-title" class="inner">
           <h1 id="logo-wrap">
-            <a href="/" id="logo">nxdyy的个人站点</a>
+            <a href="/" id="logo" data-typewriter data-typewriter-speed="100" data-typewriter-delay="300">
+              nxdyy的个人站点
+            </a>
+            <span class="terminal-cursor"></span>
           </h1>
           
           <div class="page-buttons">
-            <a class="page-btn" href="https://www.nxdyy.cn/archives">查看相关项目</a>
-            <a class="page-btn" target="_blank" rel="noopener" href="https://blog.nxdyy.cn">nxdyy的个人博客</a>
+            <a class="page-btn terminal-btn-style" href="https://www.nxdyy.cn/archives">
+              <span class="prompt">$</span> 查看相关项目
+            </a>
+            <a class="page-btn terminal-btn-style" target="_blank" rel="noopener" href="https://blog.nxdyy.cn">
+              <span class="prompt">$</span> nxdyy的个人博客
+            </a>
           </div>
         </div>
         
@@ -70,43 +116,27 @@ var _hmt = _hmt || [];
             <a id="main-nav-toggle" class="nav-icon"></a>
             
               <a class="main-nav-link" href="/">
-                  
-                  
-
-                
-                  首页
-                </a>
+                  <span class="nav-prompt">></span> 首页
+              </a>
             
               <a class="main-nav-link" href="/archives">
-                  
-                  
-
-                
-                  相关项目
-                </a>
+                  <span class="nav-prompt">></span> 相关项目
+              </a>
             
               <a class="main-nav-link" href="/about">
-                  
-                  
-
-                
-                  关于
-                </a>
+                  <span class="nav-prompt">></span> 关于
+              </a>
             
               <a class="main-nav-link" target="_blank" rel="noopener" href="https://github.com/nxdyy">
-                  
-                  
-
-                
-                  Github
-                </a>
+                  <span class="nav-prompt">></span> Github
+              </a>
             
           </nav>
           <nav id="sub-nav">
             
-              <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+              <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed" data-i18n-attr="title" data-i18n="nav.rss"></a>
             
-            <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            <a id="nav-search-btn" class="nav-icon" title="Search" data-i18n-attr="title" data-i18n="nav.search"></a>
           </nav>
           <div id="search-form-wrap">
             <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.nxdyy.cn"></form>
@@ -114,6 +144,7 @@ var _hmt = _hmt || [];
         </div>
     </div>
 </header>
+
 		<div class="outer">
 		
     
@@ -140,36 +171,87 @@ var _hmt = _hmt || [];
 <footer id="footer">
   
   <div class="outer">
+    <!-- Terminal Status Line -->
+    <div class="footer-status inner">
+      <div class="status-item">
+        <span class="status-indicator"></span>
+        <span data-i18n="footer.systemOnline">SYSTEM ONLINE</span>
+      </div>
+      <div class="status-item">
+        <span data-i18n="footer.theme">THEME</span>: <span id="current-theme-name">CLASSIC</span>
+      </div>
+      <div class="status-item">
+        <span data-i18n="footer.build">BUILD</span>: 20260518
+      </div>
+    </div>
+    
     <div id="footer-info" class="inner">
         <div class="left">
             &copy; 2026 nxdyy<br>
-            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and Theme by <a target="_blank" rel="noopener" href="https://github.com/jaywcjlove/hexoThemeKacper">hexoThemeKacper </a>
+            Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> :: Theme by <a target="_blank" rel="noopener" href="https://github.com/jaywcjlove/hexoThemeKacper">hexoThemeKacper</a>
         </div>
         <div class="right">
             
         </div>
     </div>
     
+    <!-- Terminal Command Line -->
+    <div class="footer-command inner">
+      <span class="prompt">$</span>
+      <span class="command" data-i18n="footer.thanks">Thanks for visiting!</span>
+      <span class="cursor"></span>
+    </div>
+    
+    
     <div id="footer-custom" class="inner">
       联系方式: <a href='mailto:nxdyys@gmail.com'>nxdyys@gmail.com</a>
     </div>
     
     
-    <div id="footer-custom" class="inner" style="text-align: center; margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255, 255, 255, 0.15);">
+    
+    <div id="footer-custom" class="inner" style="text-align: center; margin-top: var(--terminal-space-md); padding-top: var(--terminal-space-md); border-top: 1px solid var(--terminal-border);">
       <span id="busuanzi_container_site_pv" style="display: none; margin: 0 10px;">
-        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+        <span class="prompt">$</span> <span data-i18n="footer.visits">Total visits</span>: <span id="busuanzi_value_site_pv"></span>
       </span>
       <span id="busuanzi_container_site_uv" style="display: none; margin: 0 10px;">
-        本站访客数 <span id="busuanzi_value_site_uv"></span> 人
+        <span class="prompt">$</span> <span data-i18n="footer.visitors">Unique visitors</span>: <span id="busuanzi_value_site_uv"></span>
       </span>
       <span id="busuanzi_container_page_pv" style="display: none; margin: 0 10px;">
-        本文阅读量 <span id="busuanzi_value_page_pv"></span> 次
+        <span class="prompt">$</span> <span data-i18n="footer.pageViews">Page views</span>: <span id="busuanzi_value_page_pv"></span>
       </span>
     </div>
     <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
     
   </div>
 </footer>
+
+<script>
+// Update theme name in footer when theme changes
+document.addEventListener('DOMContentLoaded', function() {
+  function updateThemeName() {
+    const themeNames = {
+      'classic': 'CLASSIC TERMINAL',
+      'amber': 'AMBER MONOCHROME',
+      'cyberpunk': 'CYBERPUNK',
+      'matrix': 'MATRIX GREEN',
+      'minimal': 'MINIMAL GRAY'
+    };
+    
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'classic';
+    const themeNameEl = document.getElementById('current-theme-name');
+    if (themeNameEl) {
+      themeNameEl.textContent = themeNames[currentTheme] || 'CLASSIC';
+    }
+  }
+  
+  // Initial update
+  updateThemeName();
+  
+  // Listen for theme changes
+  window.addEventListener('themechange', updateThemeName);
+});
+</script>
+
 <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 
 

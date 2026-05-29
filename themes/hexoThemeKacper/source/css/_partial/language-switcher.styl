@@ -1,0 +1,111 @@
+// ============================================
+// Language Switcher Component
+// 语言切换器组件样式
+// ============================================
+
+.language-switcher
+  position: fixed
+  top: var(--terminal-space-lg)
+  right: calc(var(--terminal-space-lg) + 140px)
+  z-index: 1000
+  
+  @media mq-mobile
+    top: var(--terminal-space-sm)
+    right: calc(var(--terminal-space-sm) + 120px)
+
+.language-btn
+  background: var(--terminal-bg-secondary)
+  border: 1px solid var(--terminal-border)
+  color: var(--terminal-text)
+  padding: var(--terminal-space-sm) var(--terminal-space-md)
+  font-family: var(--terminal-font)
+  cursor: pointer
+  display: flex
+  align-items: center
+  gap: var(--terminal-space-sm)
+  border-radius: var(--terminal-radius)
+  transition: all var(--terminal-transition-fast)
+  font-size: var(--terminal-font-size-sm)
+  
+  &:hover
+    border-color: var(--terminal-accent)
+    box-shadow: 0 0 15px var(--terminal-glow)
+
+.language-flag
+  font-size: 1.2em
+
+.language-code
+  font-weight: 600
+  color: var(--terminal-accent)
+
+.language-dropdown
+  position: absolute
+  top: 100%
+  right: 0
+  margin-top: var(--terminal-space-sm)
+  background: var(--terminal-bg-secondary)
+  border: 1px solid var(--terminal-border)
+  border-radius: var(--terminal-radius)
+  min-width: 180px
+  opacity: 0
+  visibility: hidden
+  transform: translateY(-10px)
+  transition: all var(--terminal-transition-fast)
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5)
+  
+  &.active
+    opacity: 1
+    visibility: visible
+    transform: translateY(0)
+
+.language-option
+  display: flex
+  align-items: center
+  gap: var(--terminal-space-sm)
+  padding: var(--terminal-space-sm) var(--terminal-space-md)
+  width: 100%
+  background: transparent
+  border: none
+  color: var(--terminal-text)
+  font-family: var(--terminal-font)
+  cursor: pointer
+  text-align: left
+  transition: all var(--terminal-transition-fast)
+  font-size: var(--terminal-font-size-sm)
+  
+  &:hover
+    background: var(--terminal-bg-hover)
+    color: var(--terminal-accent)
+  
+  &.active
+    background: var(--terminal-bg-tertiary)
+    color: var(--terminal-accent)
+    
+    &::before
+      content: '>'
+      color: var(--terminal-accent)
+      margin-right: var(--terminal-space-xs)
+
+.language-option-flag
+  font-size: 1.1em
+
+.language-option-name
+  flex: 1
+
+.language-option-code
+  color: var(--terminal-text-muted)
+  font-size: 0.85em
+
+// RTL support
+[data-lang="ar"], [data-lang="he"]
+  .language-switcher
+    right: auto
+    left: calc(var(--terminal-space-lg) + 140px)
+    
+    @media mq-mobile
+      right: auto
+      left: calc(var(--terminal-space-sm) + 120px)
+  
+  .language-dropdown
+    right: auto
+    left: 0

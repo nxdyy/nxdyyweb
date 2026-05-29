@@ -1,66 +1,174 @@
+// ============================================
+// Terminal Style Footer
+// ============================================
+
 #footer
-  background: #2d3436
-  padding: 60px 0 40px
-  color: rgba(255, 255, 255, 0.85)
+  background: var(--terminal-bg-secondary)
+  padding: var(--terminal-space-xl) 0 var(--terminal-space-lg)
+  color: var(--terminal-text-secondary)
   position: relative
   overflow: hidden
+  border-top: 1px solid var(--terminal-border)
+  box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2)
+  font-family: var(--terminal-font)
+  
+  // Terminal scanline effect
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.02) 2px,
+      rgba(0, 0, 0, 0.02) 4px
+    )
+    pointer-events: none
+    z-index: 1
+  
   a
-    color: rgba(255, 255, 255, 0.9)
+    color: var(--terminal-accent)
     text-decoration: none
-    transition: all transition-fast
+    transition: all var(--terminal-transition-fast)
     position: relative
+    
     &::after
       content: ''
       position: absolute
       bottom: -2px
       left: 0
       width: 0
-      height: 2px
-      background: color-primary
-      transition: width transition-normal
+      height: 1px
+      background: var(--terminal-accent)
+      transition: width var(--terminal-transition-normal)
+      box-shadow: 0 0 5px var(--terminal-glow)
+    
     &:hover
       text-decoration: none
-      color: #fff
+      color: var(--terminal-accent-hover)
+      text-shadow: 0 0 10px var(--terminal-glow)
+      
       &::after
         width: 100%
 
 #footer-info
-  line-height: line-height
-  font-size: 0.9em
+  line-height: var(--terminal-line-height)
+  font-size: var(--terminal-font-size-sm)
   display: flex
   justify-content: space-between
   align-items: center
   flex-wrap: wrap
-  gap: 20px
+  gap: var(--terminal-space-md)
+  position: relative
+  z-index: 2
+  
   .left
     text-align: left
-    color: rgba(255, 255, 255, 0.7)
+    color: var(--terminal-text-muted)
+    
+    // Terminal prompt style
+    &::before
+      content: '$ '
+      color: var(--terminal-success)
+      font-weight: 600
+  
   .right
     display: flex
-    gap: 12px
+    gap: var(--terminal-space-sm)
     flex-wrap: wrap
+    
     a
-      padding: 6px 14px
-      background: rgba(255, 255, 255, 0.1)
-      border-radius: border-radius-xl
-      transition: all transition-normal
-      color: rgba(255, 255, 255, 0.85)
+      padding: var(--terminal-space-xs) var(--terminal-space-sm)
+      background: var(--terminal-bg-tertiary)
+      border-radius: var(--terminal-radius-sm)
+      transition: all var(--terminal-transition-fast)
+      color: var(--terminal-text-secondary)
+      border: 1px solid var(--terminal-border)
+      font-size: var(--terminal-font-size-sm)
+      
+      &::after
+        display: none
+      
       &:hover
-        background: color-primary
-        color: #fff
+        background: var(--terminal-accent)
+        color: var(--terminal-text-inverse)
+        border-color: var(--terminal-accent)
+        box-shadow: 0 0 15px var(--terminal-glow)
         transform: translateY(-2px)
 
 #footer-custom
-  margin-top: 30px
-  padding-top: 20px
-  border-top: 1px solid rgba(255, 255, 255, 0.1)
+  margin-top: var(--terminal-space-lg)
+  padding-top: var(--terminal-space-md)
+  border-top: 1px solid var(--terminal-border)
   text-align: center
-  color: rgba(255, 255, 255, 0.75)
-  font-size: 0.95em
-  line-height: 1.8
+  color: var(--terminal-text-muted)
+  font-size: var(--terminal-font-size-sm)
+  line-height: var(--terminal-line-height)
+  position: relative
+  z-index: 2
+  
   a
-    color: color-primary
+    color: var(--terminal-accent)
     font-weight: 500
-    transition: color transition-fast
+    transition: color var(--terminal-transition-fast)
+    
     &:hover
-      color: color-secondary
+      color: var(--terminal-accent-hover)
+
+// Terminal status line
+.footer-status
+  display: flex
+  justify-content: center
+  align-items: center
+  gap: var(--terminal-space-lg)
+  margin-bottom: var(--terminal-space-md)
+  font-size: var(--terminal-font-size-sm)
+  color: var(--terminal-text-muted)
+  flex-wrap: wrap
+  
+  .status-item
+    display: flex
+    align-items: center
+    gap: var(--terminal-space-xs)
+    
+    .status-indicator
+      width: 8px
+      height: 8px
+      border-radius: 50%
+      background: var(--terminal-success)
+      box-shadow: 0 0 5px var(--terminal-success)
+      animation: pulse 2s ease-in-out infinite
+
+@keyframes pulse
+  0%, 100%
+    opacity: 1
+  50%
+    opacity: 0.5
+
+// Terminal command line
+.footer-command
+  text-align: center
+  margin-top: var(--terminal-space-md)
+  font-size: var(--terminal-font-size-sm)
+  color: var(--terminal-text-secondary)
+  
+  .prompt
+    color: var(--terminal-success)
+    font-weight: 600
+    margin-right: var(--terminal-space-xs)
+  
+  .command
+    color: var(--terminal-accent)
+  
+  .cursor
+    display: inline-block
+    width: 8px
+    height: 1em
+    background: var(--terminal-accent)
+    margin-left: 2px
+    vertical-align: text-bottom
+    animation: cursor-blink 1s step-end infinite

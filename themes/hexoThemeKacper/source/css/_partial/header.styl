@@ -1,17 +1,24 @@
+// ============================================
+// Terminal Style Header
+// ============================================
+
+#header
+  position: relative
+  background: transparent
+
 .header
-  height: banner-height
+  height: 500px
   position: relative
   background: transparent
   @media mq-mobile
-    height: 300px
+    height: 350px
 
 header.hdpage
-  height: 80px
-  background: rgba(255, 255, 255, 0.98)
-  backdrop-filter: blur(20px)
-  -webkit-backdrop-filter: blur(20px)
-  box-shadow: shadow-sm
-  transition: all transition-normal
+  height: 70px
+  background: var(--terminal-bg-secondary)
+  border-bottom: 1px solid var(--terminal-border)
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3)
+  transition: all var(--terminal-transition-normal)
   @media mq-mobile
     height: 60px
 
@@ -19,24 +26,44 @@ header.hdpage
   height: 100%
   position: relative
   @media mq-mobile
-    height: 85%
+    height: 100%
 
 #header-inner
   position: relative
   overflow: visible
   z-index: 999
+  padding: var(--terminal-space-sm) 0
 
+// Banner with terminal overlay
 #banner
   position: absolute
   top: 0
   left: 0
   width: 100%
   height: 100%
-  background-image: url(banner-url)
-  background-position: center center
-  background-repeat: no-repeat
-  background-size: cover
+  background: linear-gradient(135deg, var(--terminal-bg) 0%, var(--terminal-bg-secondary) 50%, var(--terminal-bg-tertiary) 100%)
   z-index: -1
+  overflow: hidden
+  
+  // Scanline effect
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    )
+    pointer-events: none
+    z-index: 1
+  
+  // Grid pattern
   &::after
     content: ''
     position: absolute
@@ -44,8 +71,21 @@ header.hdpage
     left: 0
     width: 100%
     height: 100%
-    background: rgba(0, 0, 0, 0.3)
+    background-image: 
+      linear-gradient(rgba(88, 166, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(88, 166, 255, 0.03) 1px, transparent 1px)
+    background-size: 50px 50px
+    pointer-events: none
 
+.terminal-overlay
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 100%)
+
+// Header Title Section
 #header-title
   text-align: center
   height: auto
@@ -53,119 +93,190 @@ header.hdpage
   top: 50%
   left: 0
   transform: translateY(-50%)
-  padding: 0 20px
+  padding: 0 var(--terminal-space-lg)
   width: 100%
 
-$logo-text
-  text-decoration: none
-  color: #fff
-  font-weight: 300
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3)
-  transition: all transition-normal
+// Logo styles with terminal effect
+#logo-wrap
+  position: relative
+  display: inline-block
+  margin-bottom: var(--terminal-space-md)
 
 #logo
-  @extend $logo-text
-  font-size: logo-size
-  font-weight: logo-weight
-  text-shadow: logo-shadow
-  font-style: normal
-  line-height: logo-size
-  letter-spacing: 3px
+  font-size: 3rem
+  font-weight: 700
+  color: var(--terminal-text)
+  text-decoration: none
+  letter-spacing: 2px
+  font-family: var(--terminal-font)
+  text-shadow: 0 0 20px var(--terminal-glow)
   display: inline-block
-  transition: all transition-normal
+  transition: all var(--terminal-transition-fast)
+  
   &:hover
-    transform: scale(1.02)
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4)
+    color: var(--terminal-accent)
+    text-shadow: 0 0 30px var(--terminal-glow-strong)
+  
   @media mq-mobile
-    font-size: 48px
-    padding-bottom: 5px
+    font-size: 2rem
+
+// Typewriter cursor for logo
+#logo-wrap .terminal-cursor
+  display: inline-block
+  width: 12px
+  height: 1.2em
+  background: var(--terminal-accent)
+  margin-left: 4px
+  vertical-align: text-bottom
+  animation: cursor-blink 1s step-end infinite
+  box-shadow: 0 0 10px var(--terminal-glow)
+
+// Subtitle
+#subtitle-wrap
+  margin-top: var(--terminal-space-md)
 
 #subtitle
-  @extend $logo-text
-  font-size: subtitle-size
-  line-height: subtitle-line
-  letter-spacing: 2px
+  font-size: 1.25rem
+  color: var(--terminal-text-secondary)
+  text-decoration: none
+  letter-spacing: 1px
+  font-weight: 400
   display: inline-block
-  width: 90%
-  max-width: 700px
-  font-weight: 300
-  opacity: 0.9
+  font-family: var(--terminal-font)
+  
   @media mq-mobile
-    font-size: 16px
-    line-height: 22px
+    font-size: 1rem
 
-#subtitle-wrap
-  margin-top: subtitle-size
+// Page buttons with terminal style
+.page-buttons
+  display: flex
+  gap: var(--terminal-space-md)
+  margin-top: var(--terminal-space-xl)
+  justify-content: center
+  flex-wrap: wrap
 
+.page-btn
+  position: relative
+  display: inline-flex
+  align-items: center
+  gap: var(--terminal-space-sm)
+  padding: var(--terminal-space-sm) var(--terminal-space-md)
+  background: transparent
+  color: var(--terminal-accent)
+  text-decoration: none
+  border: 1px solid var(--terminal-accent)
+  border-radius: var(--terminal-radius-sm)
+  font-size: var(--terminal-font-size)
+  font-family: var(--terminal-font)
+  font-weight: 500
+  letter-spacing: 0.5px
+  transition: all var(--terminal-transition-fast)
+  cursor: pointer
+  overflow: hidden
+  
+  .prompt
+    color: var(--terminal-success)
+    font-weight: 600
+    user-select: none
+  
+  &:hover
+    background: var(--terminal-accent)
+    color: var(--terminal-text-inverse)
+    box-shadow: 0 0 20px var(--terminal-glow)
+    text-decoration: none
+    transform: translateY(-2px)
+  
+  &:active
+    transform: translateY(0)
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.3)
+
+// Navigation
 #main-nav
   float: left
-  margin-left: -15px
-  padding: 6px 0
-  &:first-child
-    margin-left:0px
+  margin-left: calc(-1 * var(--terminal-space-sm))
+  padding: var(--terminal-space-xs) 0
+  
   @media mq-mobile
-    padding: 6px 0
+    padding: var(--terminal-space-xs) 0
+
+.nav-prompt
+  color: var(--terminal-success)
+  margin-right: var(--terminal-space-xs)
+  font-weight: 600
+  user-select: none
 
 $nav-link
   float: left
-  color: #fff
-  opacity: 0.8
+  color: var(--terminal-text)
+  opacity: 0.85
   text-decoration: none
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2)
-  transition: all transition-fast
+  transition: all var(--terminal-transition-fast)
   display: block
-  padding: 20px 15px
+  padding: var(--terminal-space-md) var(--terminal-space-sm)
   position: relative
+  font-family: var(--terminal-font)
+  
   &::after
     content: ''
     position: absolute
-    bottom: 10px
-    left: 50%
-    width: 0
-    height: 2px
-    background: color-primary
-    transition: all transition-fast
-    transform: translateX(-50%)
+    bottom: 8px
+    left: var(--terminal-space-sm)
+    right: var(--terminal-space-sm)
+    height: 1px
+    background: var(--terminal-accent)
+    transform: scaleX(0)
+    transition: transform var(--terminal-transition-fast)
+    box-shadow: 0 0 5px var(--terminal-glow)
+  
   &:hover
     opacity: 1
+    color: var(--terminal-accent)
+    text-shadow: 0 0 10px var(--terminal-glow)
+    
     &::after
-      width: 80%
+      transform: scaleX(1)
 
 .nav-icon
   @extend $nav-link
   font-family: font-icon
   text-align: center
-  font-size: font-size
-  width: font-size
-  height: font-size
-  padding: 20px 15px
+  font-size: var(--terminal-font-size)
+  width: var(--terminal-font-size)
+  height: var(--terminal-font-size)
+  padding: var(--terminal-space-md) var(--terminal-space-sm)
   position: relative
   cursor: pointer
+  
   &::after
     display: none
+  
   @media mq-mobile
-    padding: 12px 15px
+    padding: var(--terminal-space-sm) var(--terminal-space-sm)
 
 .main-nav-link
   @extend $nav-link
-  letter-spacing: 1px
+  letter-spacing: 0.5px
   font-weight: 500
+  
   @media mq-mobile
     display: none
 
 #main-nav-toggle
   display: none
+  
   &:before
     content: "\f0c9"
+  
   @media mq-mobile
     display: block
 
 #sub-nav
   float: right
-  margin-right: -15px
-  padding: 6px 0
+  margin-right: calc(-1 * var(--terminal-space-sm))
+  padding: var(--terminal-space-xs) 0
+  
   @media mq-mobile
-    padding: 6px 0
+    padding: var(--terminal-space-xs) 0
 
 #nav-rss-link
   &:before
@@ -175,17 +286,20 @@ $nav-link
   &:before
     content: "\f002"
 
+// Search form
 #search-form-wrap
   position: absolute
-  top: 15px
-  width: 200px
-  height: 36px
-  right: -200px
+  top: 10px
+  width: 220px
+  height: 40px
+  right: -220px
   opacity: 0
-  transition: all transition-normal
+  transition: all var(--terminal-transition-normal)
+  
   &.on
     opacity: 1
     right: 0
+  
   @media mq-mobile
     width: 100%
     right: -100%
@@ -195,19 +309,23 @@ $nav-link
   top: 0
   left: 0
   right: 0
-  background: rgba(255, 255, 255, 0.95)
-  backdrop-filter: blur(10px)
-  padding: 8px 18px
-  border-radius: border-radius-xl
-  box-shadow: shadow-md
+  background: var(--terminal-bg-secondary)
+  border: 1px solid var(--terminal-border)
+  padding: var(--terminal-space-sm) var(--terminal-space-md)
+  border-radius: var(--terminal-radius)
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3)
 
 .search-form-input
   border: none
   background: none
-  color: color-default
+  color: var(--terminal-text)
   width: 100%
-  font: 14px font-sans
+  font: var(--terminal-font-size) var(--terminal-font)
   outline: none
+  
+  &::placeholder
+    color: var(--terminal-text-muted)
+  
   &::-webkit-search-results-decoration
   &::-webkit-search-cancel-button
     -webkit-appearance: none
@@ -215,60 +333,15 @@ $nav-link
 .search-form-submit
   position: absolute
   top: 50%
-  right: 10px
-  margin-top: -7px
-  font: 14px font-icon
+  right: var(--terminal-space-sm)
+  transform: translateY(-50%)
+  font: var(--terminal-font-size) font-icon
   border: none
   background: none
-  color: color-primary
+  color: var(--terminal-accent)
   cursor: pointer
-  transition: color transition-fast
+  transition: color var(--terminal-transition-fast)
+  
   &:hover, &:focus
-    color: color-secondary
-
-.page-buttons
-  display: flex
-  gap: 20px
-  margin-top: 40px
-  margin-bottom: 20px
-  justify-content: center
-  flex-wrap: wrap
-  .page-btn
-    position: relative
-    display: inline-flex
-    align-items: center
-    padding: 14px 36px
-    background: color-primary
-    color: #fff
-    text-decoration: none
-    border-radius: border-radius-xl
-    font-size: 0.95em
-    font-weight: 600
-    letter-spacing: 0.5px
-    overflow: hidden
-    transition: all transition-normal
-    box-shadow: 0 4px 15px rgba(9, 132, 227, 0.3)
-    cursor: pointer
-    border: 2px solid transparent
-    &::before
-      content: ''
-      position: absolute
-      top: 50%
-      left: 50%
-      width: 0
-      height: 0
-      border-radius: 50%
-      background: rgba(255, 255, 255, 0.2)
-      transform: translate(-50%, -50%)
-      transition: all transition-slow
-    &:hover
-      transform: translateY(-4px)
-      box-shadow: 0 8px 25px rgba(9, 132, 227, 0.4)
-      text-decoration: none
-      background: color-secondary
-      &::before
-        width: 400px
-        height: 400px
-    &:active
-      transform: translateY(-2px)
-      box-shadow: 0 4px 12px rgba(9, 132, 227, 0.3)
+    color: var(--terminal-accent-hover)
+    text-shadow: 0 0 10px var(--terminal-glow)

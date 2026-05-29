@@ -1,4 +1,3 @@
-
 <% 
 var ispage = false
     hdpage =""
@@ -12,26 +11,36 @@ if(!ishome){
 }else{
   hdpage ="header"
 }
-// console.log("message_isHome:",is_home());
 %>
 <header id="header" class="<%=hdpage%>">
     <%if(!ispage){%>
-    <div id="banner"></div>
+    <div id="banner">
+        <div class="terminal-overlay"></div>
+    </div>
     <%}%>
     <div id="header-outer" class="outer">
         <%if(!ispage){%>
         <div id="header-title" class="inner">
           <h1 id="logo-wrap">
-            <a href="<%- url_for() %>" id="logo"><%= config.title %></a>
+            <a href="<%- url_for() %>" id="logo" data-typewriter data-typewriter-speed="100" data-typewriter-delay="300">
+              <%= config.title %>
+            </a>
+            <span class="terminal-cursor"></span>
           </h1>
           <% if (theme.subtitle){ %>
             <h2 id="subtitle-wrap">
-              <a href="<%- url_for() %>" id="subtitle"><%= theme.subtitle %></a>
+              <a href="<%- url_for() %>" id="subtitle" data-typewriter data-typewriter-speed="80" data-typewriter-delay="1500">
+                <%= theme.subtitle %>
+              </a>
             </h2>
           <% } %>
           <div class="page-buttons">
-            <a class="page-btn" href="https://www.nxdyy.cn/archives">查看相关项目</a>
-            <a class="page-btn" href="https://blog.nxdyy.cn">nxdyy的个人博客</a>
+            <a class="page-btn terminal-btn-style" href="https://www.nxdyy.cn/archives">
+              <span class="prompt">$</span> 查看相关项目
+            </a>
+            <a class="page-btn terminal-btn-style" href="https://blog.nxdyy.cn">
+              <span class="prompt">$</span> nxdyy的个人博客
+            </a>
           </div>
         </div>
         <%}%>
@@ -40,20 +49,15 @@ if(!ishome){
             <a id="main-nav-toggle" class="nav-icon"></a>
             <% for (var i in theme.menu){ %>
               <a class="main-nav-link" href="<%- url_for(theme.menu[i]) %>">
-                  <%if(i == "Home"){%>
-                  <%}else{%>
-                  <%}%>
-
-                
-                  <%= i %>
-                </a>
+                  <span class="nav-prompt">></span> <%= i %>
+              </a>
             <% } %>
           </nav>
           <nav id="sub-nav">
             <% if (theme.rss){ %>
-              <a id="nav-rss-link" class="nav-icon" href="<%- theme.rss %>" title="RSS Feed"></a>
+              <a id="nav-rss-link" class="nav-icon" href="<%- theme.rss %>" title="RSS Feed" data-i18n-attr="title" data-i18n="nav.rss"></a>
             <% } %>
-            <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+            <a id="nav-search-btn" class="nav-icon" title="Search" data-i18n-attr="title" data-i18n="nav.search"></a>
           </nav>
           <div id="search-form-wrap">
             <%- search_form({button: '&#xF002;'}) %>

@@ -28,8 +28,45 @@ if (is_archive()){
     <% if (theme.favicon){ %>
       <link rel="icon" href="<%- theme.favicon %>">
     <% } %>
-    <link rel="stylesheet" href="/css/style.css?v=20260502005" media="screen" type="text/css">
-
+    
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/css/style.css?v=20260518001" media="screen" type="text/css">
+    
+    <!-- Theme Manager Script - Load Early -->
+    <script>
+    // 立即执行：从 localStorage 恢复主题和语言，防止闪烁
+    (function() {
+        try {
+            var savedTheme = localStorage.getItem('terminal-theme');
+            if (savedTheme && ['classic', 'amber', 'cyberpunk', 'matrix', 'minimal'].includes(savedTheme)) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            }
+            
+            var savedLang = localStorage.getItem('terminal-language');
+            if (savedLang && ['zh-CN', 'ja', 'en'].includes(savedLang)) {
+                document.documentElement.setAttribute('data-lang', savedLang);
+            }
+        } catch (e) {
+            // 忽略 localStorage 错误
+        }
+    })();
+    </script>
+    
     <%- partial('baidu-analytics') %>
     <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+    
+    <!-- i18n Translation Files -->
+    <script src="/js/i18n/zh-CN.js?v=20260518001"></script>
+    <script src="/js/i18n/ja.js?v=20260518001"></script>
+    <script src="/js/i18n/en.js?v=20260518001"></script>
+    
+    <!-- i18n Manager -->
+    <script src="/js/i18n-manager.js?v=20260518001" defer></script>
+    
+    <!-- Theme Manager -->
+    <script src="/js/theme-manager.js?v=20260518001" defer></script>
 </head>
