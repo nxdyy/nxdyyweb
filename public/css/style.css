@@ -145,7 +145,6 @@ body:after {
 body:after {
   clear: both;
 }
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=VT323&family=Orbitron:wght@400;500;600;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=Fira+Code:wght@400;500;600&display=swap");
 html,
 body,
 div,
@@ -243,6 +242,7 @@ a img {
   src: url("fonts/fontawesome-webfont.eot?#iefix&v=4.0.3") format('embedded-opentype'), url("fonts/fontawesome-webfont.woff2?v=4.0.3") format('woff2'), url("fonts/fontawesome-webfont.woff?v=4.0.3") format('woff'), url("fonts/fontawesome-webfont.ttf?v=4.0.3") format('truetype'), url("fonts/fontawesome-webfont.svg?v=4.0.3#fontawesomeregular") format('svg');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 *,
 *::before,

@@ -24,13 +24,17 @@
       <link rel="icon" href="/css/favicon.ico">
     
     
-    <!-- Preconnect to Google Fonts -->
+    <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+    <link rel="preconnect" href="https://cdn.bootcss.com">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=VT323&family=Orbitron:wght@400;500;600;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=Fira+Code:wght@400;500;600&display=swap">
+
     <!-- Theme CSS -->
     <link rel="stylesheet" href="/css/style.css?v=20260518001" media="screen" type="text/css">
-    
+
     <!-- Theme Manager Script - Load Early -->
     <script>
     // 立即执行：从 localStorage 恢复主题和语言，防止闪烁
@@ -40,7 +44,7 @@
             if (savedTheme && ['classic', 'amber', 'cyberpunk', 'matrix', 'minimal'].includes(savedTheme)) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
             }
-            
+
             var savedLang = localStorage.getItem('terminal-language');
             if (savedLang && ['zh-CN', 'ja', 'en'].includes(savedLang)) {
                 document.documentElement.setAttribute('data-lang', savedLang);
@@ -50,7 +54,7 @@
         }
     })();
     </script>
-    
+
     
 <!-- Baidu Analytics -->
 <script type="text/javascript">
@@ -65,12 +69,7 @@ var _hmt = _hmt || [];
 <!-- End Baidu Analytics -->
 
 
-    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
-    
-    <!-- i18n Translation Files -->
-    <script src="/js/i18n/zh-CN.js?v=20260518001"></script>
-    <script src="/js/i18n/ja.js?v=20260518001"></script>
-    <script src="/js/i18n/en.js?v=20260518001"></script>
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js" defer></script>
     
     <!-- i18n Manager -->
     <script src="/js/i18n-manager.js?v=20260518001" defer></script>
@@ -80,7 +79,7 @@ var _hmt = _hmt || [];
 <meta name="generator" content="Hexo 8.1.1"></head>
 
 <body>
-<div id="container"> 
+<div id="container">
 
     
     <div id="wrap">
@@ -123,7 +122,7 @@ var _hmt = _hmt || [];
     </div>
 </header>
 
-		<div class="outer">
+		<main class="outer" id="main-content">
 		
   
 
@@ -172,7 +171,7 @@ var _hmt = _hmt || [];
 
 
 
-		</div>
+		</main>
 		
 
 <footer id="footer">
@@ -188,7 +187,7 @@ var _hmt = _hmt || [];
         <span data-i18n="footer.theme">THEME</span>: <span id="current-theme-name">CLASSIC</span>
       </div>
       <div class="status-item">
-        <span data-i18n="footer.build">BUILD</span>: 20260529
+        <span data-i18n="footer.build">BUILD</span>: 20260530
       </div>
     </div>
     
@@ -259,28 +258,23 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
-
 
 <script type="text/javascript">
-$(function(){
-  var $img = $('.article-entry img'),
-      $link = $img.css({
-        "display":"inline-block"
-      }).parent()
-
-  if($link.parent().is("a")){
-      $img.each(function(idx,item) {
-      $(this).parent().attr('href',$(this).parent().parent().attr('href'))
-    })
-  }
-})
+document.addEventListener('DOMContentLoaded', function(){
+  var images = document.querySelectorAll('.article-entry img');
+  images.forEach(function(img) {
+    var parent = img.parentElement;
+    if (!parent) return;
+    var grandparent = parent.parentElement;
+    if (grandparent && grandparent.tagName === 'A') {
+      parent.setAttribute('href', grandparent.getAttribute('href'));
+    }
+  });
+});
 </script>
 
 
-
-<script src="/js/script.js"></script>
-
+<script src="/js/script.js?v=20260518001" defer></script>
 
 
   	</div>

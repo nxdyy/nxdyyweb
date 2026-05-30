@@ -29,13 +29,17 @@ if (is_archive()){
       <link rel="icon" href="<%- theme.favicon %>">
     <% } %>
     
-    <!-- Preconnect to Google Fonts -->
+    <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+    <link rel="preconnect" href="https://cdn.bootcss.com">
+
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=VT323&family=Orbitron:wght@400;500;600;700&family=Courier+Prime:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&family=Fira+Code:wght@400;500;600&display=swap">
+
     <!-- Theme CSS -->
     <link rel="stylesheet" href="/css/style.css?v=20260518001" media="screen" type="text/css">
-    
+
     <!-- Theme Manager Script - Load Early -->
     <script>
     // 立即执行：从 localStorage 恢复主题和语言，防止闪烁
@@ -45,7 +49,7 @@ if (is_archive()){
             if (savedTheme && ['classic', 'amber', 'cyberpunk', 'matrix', 'minimal'].includes(savedTheme)) {
                 document.documentElement.setAttribute('data-theme', savedTheme);
             }
-            
+
             var savedLang = localStorage.getItem('terminal-language');
             if (savedLang && ['zh-CN', 'ja', 'en'].includes(savedLang)) {
                 document.documentElement.setAttribute('data-lang', savedLang);
@@ -55,14 +59,9 @@ if (is_archive()){
         }
     })();
     </script>
-    
+
     <%- partial('baidu-analytics') %>
-    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
-    
-    <!-- i18n Translation Files -->
-    <script src="/js/i18n/zh-CN.js?v=20260518001"></script>
-    <script src="/js/i18n/ja.js?v=20260518001"></script>
-    <script src="/js/i18n/en.js?v=20260518001"></script>
+    <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js" defer></script>
     
     <!-- i18n Manager -->
     <script src="/js/i18n-manager.js?v=20260518001" defer></script>
