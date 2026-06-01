@@ -38,10 +38,11 @@ footer_content: "联系方式: <a href='mailto:nxdyys@gmail.com'>nxdyys@gmail.co
 
 # Busuanzi Counter (不蒜子访问量统计)
 # 设置为 false 可禁用
-busuanzi: true
+busuanzi: false
 
 
 # Miscellaneous #社交网络和统计连接地址
 baidu_analytics: //hm.baidu.com/hm.js?fe2c7555911b8560db5e56121c5d5960 #百度统计
 favicon: /css/favicon.ico
 logo: /css/logo.png
+
