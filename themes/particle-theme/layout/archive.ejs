@@ -1,0 +1,19 @@
+<div class="archive">
+    <h1 class="archive-title">Archives</h1>
+    
+    <div class="archive-list">
+        <% var lastYear = ''; %>
+        <% page.posts.forEach(function(post) { %>
+            <% var currentYear = date(post.date, 'YYYY'); %>
+            <% if (lastYear !== currentYear) { %>
+                <h2 class="archive-year"><%= currentYear %></h2>
+                <% lastYear = currentYear; %>
+            <% } %>
+            
+            <div class="archive-item">
+                <span class="archive-date"><%= date(post.date, 'MM-DD') %></span>
+                <a href="<%- url_for(post.path) %>" class="archive-link"><%= post.title %><span class="arrow">→</span></a>
+            </div>
+        <% }); %>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+# Particle Theme Configuration
+
+# Blog title
+title: nxdyy的个人博客
+
+# Subtitle (optional)
+subtitle: 
+
+# Description (optional)
+description: 
+
+# Author (optional)
+author: nxdyy
+
+# Navigation buttons
+# Each item should have: text, url, type (button or text)
+buttons:
+  - text: nxdyy的个人博客
+    url: https://www.nxdyy.cn
+    type: button
+  - text: 相关项目
+    url: /archives
+    type: button
+
+# Navigation links (top right)
+nav:
+  - text: 主页
+    url: /
+  - text: nxdyy的个人博客
+    url: https://www.nxdyy.cn
+  - text: 相关项目
+    url: /archives
+  - text: 关于
+    url: /about
+
+# Social links (optional)
+social:
+
+# Footer content
+footer: "<a href='https://beian.miit.gov.cn/' target='_blank'>晋ICP备2026006275号-1</a> | <span style=\"display: inline;\"><img src=\"/TB1..50QpXXXXX7XpXXXXXXXXXX-40-40.png\" width=\"20\" style=\"vertical-align: middle;\" />  <a href=\"https://beian.mps.gov.cn/#/query/webSearch?code=14010502990640\" rel=\"noreferrer\" target=\"_blank\" style=\"vertical-align: middle;\">晋公网安备14010502990640号</a></span>"
+
+# Particle settings
+particles:
+  count: 2000
+  color: "#888888"
+  size: 1
+  gravity: 1
+  click_gravity: -5
+  damping: 0.99
+  trail_alpha: 0.05
+  dormant_opacity: 0.1
+  active_opacity: 0.3
+  activate_radius: 200

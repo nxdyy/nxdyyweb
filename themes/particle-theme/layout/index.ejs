@@ -1,0 +1,34 @@
+<h1 class="blog-title glow-text"><%= config.title %></h1>
+
+<% if (config.subtitle) { %>
+    <p class="subtitle"><%= config.subtitle %></p>
+<% } %>
+
+<div class="button-container">
+    <% if (theme.buttons) { %>
+        <% theme.buttons.forEach(function(button) { %>
+            <% if (button.type === 'button') { %>
+                <a href="<%= button.url %>" class="theme-btn">
+                    <%= button.text %>
+                    <span class="arrow">→</span>
+                </a>
+            <% } else { %>
+                <a href="<%= button.url %>" class="theme-text">
+                    <%= button.text %>
+                    <span class="arrow">→</span>
+                </a>
+            <% } %>
+        <% }); %>
+    <% } %>
+</div>
+
+<div class="article-list">
+    <% if (page.posts) { %>
+        <% page.posts.forEach(function(post) { %>
+            <div class="article-item">
+                <h2><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
+                <p><%= post.excerpt || strip_html(post.content).substring(0, 150) %></p>
+            </div>
+        <% }); %>
+    <% } %>
+</div>

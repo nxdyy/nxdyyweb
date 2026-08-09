@@ -1,0 +1,13 @@
+<div class="category">
+    <h1 class="category-title">Categories</h1>
+    
+    <div class="category-list">
+        <% site.categories.forEach(function(category) { %>
+            <div class="category-item">
+                <a href="<%- url_for(category.path) %>" class="theme-btn">
+                    <%= category.name %> (<%= category.length %>)
+                </a>
+            </div>
+        <% }); %>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="tag">
+    <h1 class="tag-title">Tags</h1>
+    
+    <div class="tag-cloud">
+        <% site.tags.forEach(function(tag) { %>
+            <a href="<%- url_for(tag.path) %>" class="theme-btn">
+                #<%= tag.name %> (<%= tag.length %>)
+            </a>
+        <% }); %>
+    </div>
+</div>
