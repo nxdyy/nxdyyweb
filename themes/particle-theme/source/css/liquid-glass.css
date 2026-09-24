@@ -1,0 +1,152 @@
+/* ============================================================
+   Liquid Glass effect — ported from liquid-glass-react
+   (GPU backdrop blur + reactive edge highlights + elastic mouse
+   response; the SVG displacement refraction was dropped for
+   performance — it re-filtered every frame over the animated
+   particle background)
+   ============================================================ */
+
+/* Glass shell: applied in-place to .theme-btn / .theme-text /
+   .theme-nav a / .article-item / .archive-item by liquid-glass.js */
+.lg-glass {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+    /* keep the negative z-index warp inside this element's own context */
+    isolation: isolate;
+    border: none;
+    background: transparent;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    /* padding-right/background keep style.css's hover-grow arrow animation */
+    transition: transform 0.2s ease-out,
+        padding-right 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55),
+        background-color 0.3s;
+    will-change: transform;
+}
+
+.lg-glass:active {
+    transform: scale(0.96) !important;
+}
+
+/* Elastic shape follows the mouse (article/archive cards stay static) */
+.lg-glass.lg-static {
+    will-change: auto;
+}
+
+/* Frosted backdrop layer — pure GPU (backdrop-filter), no SVG filters.
+   z-index: -1 sinks it below the original children (text, .arrow),
+   so existing absolute-positioned content keeps its geometry. */
+.lg-warp {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(6px) saturate(140%);
+    -webkit-backdrop-filter: blur(6px) saturate(140%);
+}
+
+/* Edge highlight rings, reactive to mouse position (gradient set by JS) */
+.lg-border {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    padding: 1.5px;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.5),
+        inset 0 1px 3px rgba(255, 255, 255, 0.25),
+        0 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.lg-border-1 {
+    mix-blend-mode: screen;
+    opacity: 0.2;
+}
+
+.lg-border-2 {
+    mix-blend-mode: overlay;
+}
+
+/* Hover / press glow layers */
+.lg-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
+}
+
+.lg-glow-hover {
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 50%);
+}
+
+.lg-glow-active {
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 80%);
+}
+
+.lg-glass:hover .lg-glow-hover {
+    opacity: 0.5;
+}
+
+.lg-glass:active .lg-glow-active {
+    opacity: 0.5;
+}
+
+/* ---------- per-element geometry ---------- */
+
+.theme-nav .lg-glass {
+    border-radius: 999px;
+    padding: 8px 18px;
+}
+
+/* Nav links are glass pills — drop the underline hover effect */
+.theme-nav a.lg-glass::after {
+    content: none;
+}
+
+/* Buttons keep style.css padding (12px 24px) so the hover
+   padding-right: 45px arrow-grow animation still works. */
+.theme-btn.lg-glass,
+.theme-text.lg-glass {
+    border-radius: 999px;
+}
+
+/* Enlarge the two hero buttons on the homepage only.
+   Hover re-declares padding-right so the arrow-grow still wins. */
+.button-container .theme-btn.lg-glass {
+    padding: 16px 32px;
+    font-size: 16px;
+}
+
+.button-container .theme-btn.lg-glass:hover {
+    padding-right: 52px;
+}
+
+.article-item.lg-glass,
+.archive-item.lg-glass {
+    display: block;
+    border-radius: 18px;
+}
+
+/* Cards keep their original hover slide; no JS elastic on them.
+   The reactive glass ring replaces the old solid outline. */
+.article-item.lg-glass:hover,
+.archive-item.lg-glass:hover {
+    transform: translateX(10px);
+    border-color: transparent;
+}
+
+/* Fallback: browsers without backdrop-filter keep a subtle tint */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .lg-warp {
+        background: rgba(255, 255, 255, 0.06);
+    }
+}
